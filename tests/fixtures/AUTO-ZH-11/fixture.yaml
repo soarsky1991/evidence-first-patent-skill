@@ -1,0 +1,7 @@
+id: AUTO-ZH-11
+language: auto
+patent_type: invention
+kind: synthetic
+controlling_request_language: zh-CN
+scenario: Chinese controlling request with English-heavy inputs
+expected: resolved language zh-CN

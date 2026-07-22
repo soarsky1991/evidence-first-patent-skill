@@ -1,0 +1,6 @@
+id: MEDIA-16
+language: bilingual
+patent_type: invention
+kind: synthetic
+scenario: one valid CC BY ledger entry and one unknown-license entry
+expected: valid entry passes; unknown-license entry blocks release

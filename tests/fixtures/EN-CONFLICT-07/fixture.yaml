@@ -1,0 +1,6 @@
+id: EN-CONFLICT-07
+language: en-US
+patent_type: invention
+kind: synthetic
+scenario: unsupported performance target stated as a past result
+expected: reclassify or block; accepted unsupported_measured_claims=0

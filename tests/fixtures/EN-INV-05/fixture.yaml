@@ -1,0 +1,6 @@
+id: EN-INV-05
+language: en-US
+patent_type: invention
+kind: synthetic
+scenario: offline run using cached prior art
+expected: no network attempt; local draft, trace, and scorecard succeed

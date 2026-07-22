@@ -1,0 +1,6 @@
+id: DATE-13
+language: bilingual
+patent_type: invention
+kind: synthetic
+scenario: patent publication after critical date
+expected: retained as context; excluded as qualifying prior art

@@ -1,0 +1,6 @@
+id: ZH-UM-02
+language: zh-CN
+patent_type: utility_model
+kind: synthetic
+scenario: structural fixture with method-like source wording
+expected: independent claim is product-structural; dependencies valid; trace=100.0

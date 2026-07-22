@@ -1,0 +1,9 @@
+{
+  "schema_version": "0.1.0",
+  "locked_at": "2026-07-21T00:00:00-07:00",
+  "files": {
+    "SPEC.md": "994eaa3b7b676d9dac35398350a10fd24fa3d63ae7d143b97697500454a78f4b",
+    ".workflow/ACCEPTANCE.md": "ef4b9cf4bd6cf3f881129dfd9ec7c81678e8cebeba61f750a085e43b75c2889b"
+  },
+  "policy": "Frozen acceptance baseline. Implementation workers must not modify these files."
+}

@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If this workflow helps your research or practice, please cite it."
+title: "Evidence-First Patent Skill"
+authors:
+  - name: "Evidence-First Patent Skill contributors"
+version: "0.1.0"
+date-released: "2026-07-21"
+license-url: "https://github.com/soarsky1991/evidence-first-patent-skill/blob/v0.1.0/NOTICE"
+abstract: "A bilingual, evidence-governed drafting-preparation workflow for Chinese patent disclosures."
+repository-code: "https://github.com/soarsky1991/evidence-first-patent-skill"

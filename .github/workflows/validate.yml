@@ -1,0 +1,56 @@
+name: validate
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  local-contract:
+    runs-on: ubuntu-latest
+    env:
+      RELEASE_QA_DIR: ${{ runner.temp }}/evidence-first-patent-skill-v0.1.0
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run dependency-free README quick start offline
+        run: |
+          python3 skill/draft-patents-evidence-first/scripts/init_case.py ./demo-case --case-id demo-case --language bilingual --patent-type invention
+          python3 skill/draft-patents-evidence-first/scripts/validate_case.py ./demo-case
+          python3 skill/draft-patents-evidence-first/scripts/scan_sensitive.py ./demo-case --format json
+      - name: Install document rendering and text-extraction tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends libreoffice-writer poppler-utils
+      - name: Install validation dependency
+        run: python -m pip install --disable-pip-version-check -r requirements-dev.txt
+      - name: Check Python syntax
+        run: python -m compileall -q skill/draft-patents-evidence-first/scripts
+      - name: Validate Skill contract
+        run: python tests/vendor/quick_validate.py skill/draft-patents-evidence-first
+      - name: Run unit tests
+        run: python -m unittest -v tests/test_cli.py tests/test_artifact_inspector.py tests/test_public_content.py
+      - name: Execute fixture acceptance matrix
+        run: python skill/draft-patents-evidence-first/scripts/run_acceptance.py --repo . --fixtures tests/fixtures --report .workflow/ci-test-report.json
+      - name: Exercise command help
+        run: |
+          for f in skill/draft-patents-evidence-first/scripts/{init_case,validate_case,dedupe_families,trace_claims,compare_bilingual,scan_sensitive,build_package,run_acceptance,resolve_language,validate_media,inspect_artifacts}.py; do python "$f" --help; done
+      - name: Check for release-sensitive markers
+        run: python skill/draft-patents-evidence-first/scripts/scan_sensitive.py . --format json
+      - name: Inspect public-asset metadata
+        run: python skill/draft-patents-evidence-first/scripts/inspect_artifacts.py public-assets --format json
+      - name: Validate media ledger and hashes
+        run: python skill/draft-patents-evidence-first/scripts/validate_media.py --ledger public-assets/media-ledger.md
+      - name: Rebuild release candidate in a clean temporary directory
+        run: |
+          test ! -e "$RELEASE_QA_DIR"
+          mkdir -p "$RELEASE_QA_DIR"
+          python tests/build_release_samples.py --repo . --output "$RELEASE_QA_DIR/samples"
+          python tests/build_source_archive.py --repo . --output "$RELEASE_QA_DIR/evidence-first-patent-skill-v0.1.0.zip"
+          python tests/build_release_manifest.py --repo . --release "$RELEASE_QA_DIR" --output "$RELEASE_QA_DIR/release-manifest.json"
+      - name: Verify rebuilt release membership, hashes, CRC, and metadata
+        run: |
+          python tests/verify_release_assets.py --repo . --release "$RELEASE_QA_DIR" --manifest "$RELEASE_QA_DIR/release-manifest.json" --source-archive "$RELEASE_QA_DIR/evidence-first-patent-skill-v0.1.0.zip"
+          python skill/draft-patents-evidence-first/scripts/inspect_artifacts.py "$RELEASE_QA_DIR" --format json

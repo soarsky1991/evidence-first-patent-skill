@@ -1,0 +1,6 @@
+id: BI-DRIFT-10
+language: bilingual
+patent_type: utility_model
+kind: synthetic
+scenario: English omits one structural limitation
+expected: pair conflict; score below 100.0; acceptance blocked

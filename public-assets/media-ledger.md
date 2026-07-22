@@ -1,0 +1,12 @@
+# Media ledger / 媒体许可台账
+
+The two external photographs below ship under their upstream CC BY-SA 4.0 licenses. The repository-original diagram and generated social preview are original project content released under CC BY 4.0. Photographs illustrate engineering contexts only and are not evidence for a synthetic or public case.
+
+| asset_path | source_url | creator | license | license_url | retrieved_at | modifications | sha256 | disposition |
+|---|---|---|---|---|---|---|---|---|
+| `public-assets/photos/vernier-calliper-1280.jpg` | https://commons.wikimedia.org/w/index.php?title=File:Vernier_calliper.jpg&oldid=1005997035 | Stephanie cheks (source-page display name) | CC BY-SA 4.0 | https://creativecommons.org/licenses/by-sa/4.0/ | 2026-07-21 | Wikimedia-generated 1280 px thumbnail; no repository content edit | `b76cfcf0a33baa3868984a80756bcb463e0838b6ba1eaec340d63f54957c350b` | SHIPS under upstream license |
+| `public-assets/photos/engineers-vise-1280.jpg` | https://commons.wikimedia.org/w/index.php?title=File:An_engineer%27s_vise.jpg&oldid=974859332 | Dmitry Makeev | CC BY-SA 4.0 | https://creativecommons.org/licenses/by-sa/4.0/ | 2026-07-21 | Wikimedia-generated 1280 px thumbnail; no repository content edit | `99e5f151f547553d7e5dd634559c14d28cfc867a72c718375c20d589a75ee8d0` | SHIPS under upstream license |
+| `public-assets/evidence-provenance.svg` | repository-original | repository contributors | CC BY 4.0 | https://creativecommons.org/licenses/by/4.0/ | 2026-07-21 | original bilingual SVG illustration; not measured apparatus | `59ef2bd848d91c791b6a2eec1d1cbc18826279f984f0f10e4cba4764a7a7adaf` | SHIPS; attribution required |
+| `public-assets/social-preview.jpg` | repository-original | repository contributors using OpenAI image generation | CC BY 4.0 | https://creativecommons.org/licenses/by/4.0/ | 2026-07-21 | generated illustration; performance-like wording replaced with proposal/verification language; synthetic label added; resized to 1280 × 640, JPEG-compressed, and stripped of EXIF/XMP/IPTC metadata without adding visual content | `2fba634ae05523dfe8a00ad0b1647680796c9f2119f02e2831f7a2c42f4a8cfd` | SHIPS; text equivalent and prompt record provided |
+
+Alt text is supplied independently in both README languages. Material text from the social preview is transcribed in the [visual brief](../docs/content/social-preview-brief.md). Third-party photographs remain under their upstream licenses and are not relicensed by this repository.

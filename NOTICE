@@ -1,0 +1,14 @@
+Evidence-First Patent Skill
+
+License scope:
+
+- Apache License 2.0: executable code, JSON schemas, CI/configuration files, test harnesses, and repository automation.
+- CC BY 4.0: original documentation, narrative fixture/example content, original diagrams, and repository-generated media such as the social preview.
+- Upstream terms: third-party assets retain the licenses recorded in `public-assets/media-ledger.md`; they are not relicensed by this repository.
+
+Third-party photographs:
+
+- `public-assets/photos/vernier-calliper-1280.jpg`, Stephanie cheks, CC BY-SA 4.0, source and modification record in `public-assets/media-ledger.md`.
+- `public-assets/photos/engineers-vise-1280.jpg`, Dmitry Makeev, CC BY-SA 4.0, source and modification record in `public-assets/media-ledger.md`.
+
+No upstream creator endorses this repository. The photographs are illustrative and are not evidence for any demonstration or patentability conclusion.

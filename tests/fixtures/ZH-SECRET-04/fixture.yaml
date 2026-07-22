@@ -1,0 +1,6 @@
+id: ZH-SECRET-04
+language: zh-CN
+patent_type: invention
+kind: synthetic
+scenario: seeded token, personal contact, absolute path, and denylist identifier
+expected: all seeds detected; package and external query blocked

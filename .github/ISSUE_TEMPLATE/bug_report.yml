@@ -1,0 +1,17 @@
+name: Bug report
+description: Report a reproducible local workflow failure.
+title: "bug: "
+labels: [bug]
+body:
+  - type: textarea
+    attributes: {label: Reproduction, description: Use synthetic or public data only.}
+    validations: {required: true}
+  - type: textarea
+    attributes: {label: Expected evidence behavior}
+    validations: {required: true}
+  - type: checkboxes
+    attributes:
+      label: Confidentiality
+      options:
+        - label: I removed private source text, personal data, and credentials.
+          required: true

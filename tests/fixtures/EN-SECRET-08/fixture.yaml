@@ -1,0 +1,6 @@
+id: EN-SECRET-08
+language: en-US
+patent_type: utility_model
+kind: synthetic
+scenario: confidential terms in document metadata and archive member
+expected: metadata/member detected; clean package contains none

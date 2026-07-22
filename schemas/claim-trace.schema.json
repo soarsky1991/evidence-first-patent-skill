@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "claim_trace.jsonl record",
+  "type": "object",
+  "required": ["claim_id", "claim_number", "parent_claim_number", "limitation_id", "language", "limitation_text", "evidence_ids", "semantic_status", "human_review_status", "paired_limitation_id"],
+  "properties": {
+    "claim_id": {"type": "string", "pattern": "^CLM-[0-9]{3,}$"},
+    "claim_number": {"type": "integer", "minimum": 1},
+    "parent_claim_number": {"type": ["integer", "null"]},
+    "limitation_id": {"type": "string", "pattern": "^LIM-[0-9]{4,}$"},
+    "language": {"enum": ["zh-CN", "en-US"]},
+    "limitation_text": {"type": "string", "minLength": 1},
+    "evidence_ids": {"type": "array", "minItems": 1, "items": {"type": "string", "pattern": "^EV-[0-9]{4,}$"}},
+    "semantic_status": {"enum": ["supported", "inferred", "designed", "conflict", "missing"]},
+    "human_review_status": {"enum": ["pending", "accepted", "rejected"]},
+    "paired_limitation_id": {"type": ["string", "null"]},
+    "limitation_text_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "atom_map": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["type", "canonical", "text_span"],
+        "additionalProperties": false,
+        "properties": {
+          "type": {"enum": ["object", "component_or_step", "relationship", "numeric_bound", "condition", "modality"]},
+          "canonical": {"type": "string", "pattern": "^[a-z0-9][a-z0-9_.:-]*$"},
+          "text_span": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "bilingual_differences": {"type": "array", "items": {"type": "object"}}
+  }
+}

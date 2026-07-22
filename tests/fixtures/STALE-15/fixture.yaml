@@ -1,0 +1,6 @@
+id: STALE-15
+language: bilingual
+patent_type: utility_model
+kind: synthetic
+scenario: evidence changes after trace generation
+expected: stages 9-10 reset to pending; stale package rejected

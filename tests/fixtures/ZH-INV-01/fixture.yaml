@@ -1,0 +1,6 @@
+id: ZH-INV-01
+language: zh-CN
+patent_type: invention
+kind: synthetic
+scenario: documented engineering description without measurements
+expected: benefits remain proposed; unsupported_measured_claims=0; trace=100.0

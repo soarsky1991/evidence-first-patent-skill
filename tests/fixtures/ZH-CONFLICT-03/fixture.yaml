@@ -1,0 +1,6 @@
+id: ZH-CONFLICT-03
+language: zh-CN
+patent_type: invention
+kind: synthetic
+scenario: two sources disagree on a numeric bound
+expected: conflict preserved; drafting blocked until human disposition

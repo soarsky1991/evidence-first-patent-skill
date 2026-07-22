@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "evidence.jsonl record",
+  "type": "object",
+  "required": ["evidence_id", "source_id", "source_location", "verbatim", "statement", "evidence_class", "verification_status", "public_status", "derived_from", "review_notes"],
+  "properties": {
+    "evidence_id": {"type": "string", "pattern": "^EV-[0-9]{4,}$"},
+    "source_id": {"type": "string", "pattern": "^SRC-[0-9]{4,}$"},
+    "source_location": {"type": "object"},
+    "verbatim": {"type": "string"},
+    "statement": {"type": "string", "minLength": 1},
+    "evidence_class": {"enum": ["measured", "documented", "inferred", "designed"]},
+    "verification_status": {"enum": ["verified", "needs_review", "rejected"]},
+    "public_status": {"enum": ["confidential", "sanitized", "public", "synthetic"]},
+    "derived_from": {"type": "array", "items": {"type": "string", "pattern": "^EV-[0-9]{4,}$"}},
+    "review_notes": {"type": "string"},
+    "measurement": {
+      "type": "object",
+      "required": ["method", "context", "result"],
+      "properties": {
+        "method": {"type": "string", "minLength": 1},
+        "context": {"type": "string", "minLength": 1},
+        "result": {"type": "string", "minLength": 1}
+      }
+    }
+  }
+}

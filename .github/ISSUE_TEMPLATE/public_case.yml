@@ -1,0 +1,17 @@
+name: Public case proposal
+description: Propose a redistributable, public case or source.
+title: "case: "
+labels: ["good first issue", case]
+body:
+  - type: input
+    attributes: {label: Canonical source URL}
+    validations: {required: true}
+  - type: input
+    attributes: {label: Publication date or access date}
+    validations: {required: true}
+  - type: input
+    attributes: {label: License and license URL}
+    validations: {required: true}
+  - type: textarea
+    attributes: {label: Family / provenance / acceptance criteria, description: Explain family treatment, source license, and reproducible acceptance checks.}
+    validations: {required: true}

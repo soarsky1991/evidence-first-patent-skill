@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Evidence-First Patent case.yaml equivalent",
+  "type": "object",
+  "required": ["schema_version", "case_id", "language", "jurisdiction", "patent_type", "critical_date", "priority_claimed", "confidentiality_mode", "human_gate"],
+  "properties": {
+    "schema_version": {"const": "0.1.0"},
+    "case_id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]{2,63}$"},
+    "language": {"enum": ["zh-CN", "en-US", "auto", "bilingual"]},
+    "jurisdiction": {"const": "CN"},
+    "patent_type": {"enum": ["invention", "utility_model"]},
+    "critical_date": {"type": ["string", "null"], "format": "date"},
+    "priority_claimed": {"type": "boolean"},
+    "confidentiality_mode": {"enum": ["local_only", "sanitized_search", "approved_external"]},
+    "human_gate": {
+      "type": "object",
+      "required": ["selected_concept_id", "approved_by", "approved_at", "public_boundary_confirmed"],
+      "properties": {
+        "selected_concept_id": {"type": ["string", "null"]},
+        "approved_by": {"type": ["string", "null"]},
+        "approved_at": {"type": ["string", "null"], "format": "date-time"},
+        "public_boundary_confirmed": {"type": "boolean"}
+      }
+    }
+  }
+}

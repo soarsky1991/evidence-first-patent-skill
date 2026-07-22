@@ -1,0 +1,6 @@
+id: EN-UM-06
+language: en-US
+patent_type: utility_model
+kind: synthetic
+scenario: duplicate patent publications from one family
+expected: family collapses to one comparison unit; duplicate count=0

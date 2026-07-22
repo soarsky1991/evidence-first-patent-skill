@@ -1,0 +1,6 @@
+id: GATE-14
+language: zh-CN
+patent_type: invention
+kind: synthetic
+scenario: missing concept approval and public-boundary confirmation
+expected: stage 8 cannot start

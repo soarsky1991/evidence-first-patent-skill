@@ -1,0 +1,6 @@
+id: BI-PAIR-09
+language: bilingual
+patent_type: invention
+kind: synthetic
+scenario: aligned Chinese and English claims
+expected: atomic consistency=100.0; same numbers, modality, and dependencies

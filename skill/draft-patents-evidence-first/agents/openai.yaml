@@ -1,0 +1,4 @@
+interface:
+  display_name: "Evidence-First Patent Workflow / 证据优先专利工作流"
+  short_description: "Evidence-governed bilingual CN patent drafting preparation"
+  default_prompt: "Use $draft-patents-evidence-first to prepare a China invention or utility-model disclosure package from local engineering materials. Preserve evidence provenance, distinguish measured/documented/inferred/designed statements, stop at the human selection gate, and do not present targets as achieved results."

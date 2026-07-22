@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640" role="img" aria-labelledby="title desc">
+  <title id="title">Evidence provenance flow / 证据溯源流程</title>
+  <desc id="desc">An original diagram showing source, evidence classification, human gate, draft, claim trace, and review scorecard.</desc>
+  <rect width="1280" height="640" fill="#f7f4ee"/>
+  <g font-family="Arial, sans-serif" fill="#17212b">
+    <text x="64" y="72" font-size="34" font-weight="700">Evidence provenance / 证据溯源</text>
+    <text x="64" y="110" font-size="18">Facts stay distinct from inferences and designed targets.</text>
+    <text x="64" y="136" font-size="18">事实、推断与拟议目标保持可区分。</text>
+    <g stroke="#24485a" stroke-width="4" fill="#e2eef0">
+      <rect x="70" y="220" width="180" height="120" rx="18"/><rect x="300" y="220" width="180" height="120" rx="18"/>
+      <rect x="530" y="220" width="180" height="120" rx="18" fill="#f4e7c5"/><rect x="760" y="220" width="180" height="120" rx="18"/>
+      <rect x="990" y="220" width="220" height="120" rx="18" fill="#dce8d7"/>
+    </g>
+    <g font-size="21" text-anchor="middle">
+      <text x="160" y="267">Source material</text><text x="160" y="298">来源材料</text>
+      <text x="390" y="267">Evidence record</text><text x="390" y="298">证据记录</text>
+      <text x="620" y="267">Human gate</text><text x="620" y="298">人工选择门</text>
+      <text x="850" y="267">Draft</text><text x="850" y="298">披露草案</text>
+      <text x="1100" y="267">Trace + review</text><text x="1100" y="298">溯源与审核</text>
+    </g>
+    <g stroke="#b45f36" stroke-width="5" fill="none" marker-end="url(#arrow)"><path d="M250 280h45"/><path d="M480 280h45"/><path d="M710 280h45"/><path d="M940 280h45"/></g>
+    <g font-size="20"><text x="100" y="420">measured / documented / inferred / designed</text><text x="100" y="454">实测 / 已记载 / 推断 / 拟议</text><text x="760" y="420">Every limitation → evidence ID</text><text x="760" y="454">每个限定 → 证据 ID</text></g>
+    <text x="100" y="560" font-size="20" fill="#8f3d2e">Targets are verification plans, never achieved results without measured evidence.</text>
+    <text x="100" y="590" font-size="20" fill="#8f3d2e">没有实测证据，目标不能写成已实现结果。</text>
+  </g>
+  <defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0 0L10 3L0 6z" fill="#b45f36"/></marker></defs>
+</svg>

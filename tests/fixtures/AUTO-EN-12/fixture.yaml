@@ -1,0 +1,7 @@
+id: AUTO-EN-12
+language: auto
+patent_type: invention
+kind: synthetic
+controlling_request_language: en-US
+scenario: English controlling request with Chinese-heavy inputs
+expected: resolved language en-US
