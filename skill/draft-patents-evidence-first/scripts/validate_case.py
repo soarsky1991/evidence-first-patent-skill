@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Validate the complete local case contract without modifying inputs."""
 from __future__ import annotations
-import argparse, collections, hashlib, re, sys
+import argparse, collections, hashlib, os, re, sys
 from pathlib import Path
 from evidence_first_lib import ValidationError, command_error, load_json, read_case
 
@@ -719,7 +719,14 @@ def main() -> int:
         bilingual_consistency = 100.0 if bilingual and not any(row["semantic_status"] == "conflict" for row in trace) else (None if not bilingual else 0.0)
         expected = {"evidence_coverage_pct": evidence_coverage, "unsupported_measured_claims": unsupported, "duplicate_patent_families": duplicate_families, "claim_trace_coverage_pct": trace_coverage, "bilingual_atomic_consistency_pct": bilingual_consistency}
         if unsupported:
-            raise ValidationError("unsupported_measured_claims contains achieved result(s) without matching verified measured evidence")
+            diagnostic = ""
+            # Acceptance fixtures contain synthetic public text.  An explicit CI
+            # diagnostic flag may expose only those clauses to make cross-platform
+            # false positives actionable; normal case validation never echoes a
+            # user's draft content.
+            if os.environ.get("EFPS_FIXTURE_DIAGNOSTICS") == "1":
+                diagnostic = ": " + repr([clause for clause in achieved if not _achieved_evidence_matches(clause, evidence)])
+            raise ValidationError("unsupported_measured_claims contains achieved result(s) without matching verified measured evidence" + diagnostic)
         if any(score[key] != value for key, value in expected.items()):
             raise ValidationError("scorecard metrics are not reconciled with canonical evidence and rendered claims")
         blockers = []

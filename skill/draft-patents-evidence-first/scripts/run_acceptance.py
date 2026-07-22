@@ -44,7 +44,11 @@ REQUIRED_FIXTURE_FIELDS = {"id", "language", "patent_type", "kind", "scenario", 
 
 
 def portable(text: str, cwd: Path) -> str:
+    # Reports are release candidates too.  Redact the platform temp root before
+    # persisting subprocess diagnostics so runner-specific temporary paths do not leak
+    # even when the command fails before its own output can be normalized.
     text = text.replace(str(cwd), ".").replace(str(Path.home()), "~")
+    text = text.replace(tempfile.gettempdir(), "<temp>")
     return re.sub(r"/(?:private/)?var/folders/[^\s\"']+", "<temp>", text)
 
 

@@ -33,6 +33,8 @@ jobs:
       - name: Run unit tests
         run: python -m unittest discover -s tests -p 'test_*.py' -v
       - name: Execute fixture acceptance matrix
+        env:
+          EFPS_FIXTURE_DIAGNOSTICS: '1'
         run: |
           if ! python skill/draft-patents-evidence-first/scripts/run_acceptance.py --repo . --fixtures tests/fixtures --report .workflow/ci-test-report.json; then
             python - <<'PY'
