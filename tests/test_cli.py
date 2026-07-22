@@ -99,6 +99,7 @@ class ContractSmokeTest(unittest.TestCase):
         for sentence in (
             "The target is to achieve a 30% gain, to be verified.",
             "No result was measured or confirmed.",
+            "The 10 mm target may be mistaken for a measured optimum.",
             "拟达到10 mm，待验证。",
             "尚未测得结果，目标为降低误差。",
         ):

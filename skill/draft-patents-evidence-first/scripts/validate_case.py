@@ -11,6 +11,7 @@ ACHIEVED = re.compile(
 NON_ACHIEVED = re.compile(
     r"\b(?:not|no|never|without)\b.{0,36}\b(?:proved|proven|tested|improved|achieved|yielded|reduced|enhanced|demonstrated|confirmed|measured|observed|reached|resulted)\b"
     r"|\b(?:target|goal)\s+(?:is|was|to|for|of)\b|\b(?:proposed|planned|expected|intended)\s+(?:to|for)\b|\baims?\s+to\b|\b(?:to\s+be\s+verified|pending\s+verification)\b"
+    r"|\b(?:may|might|could)\s+be\s+(?:mistaken|misread|misinterpreted)\s+(?:as|for)\s+(?:a\s+)?(?:measured|tested|achieved|optimized)\b"
     r"|(?:未|尚未|并未|不).{0,16}(?:试验|证明|实现|达到|降低|提升|改善|测得|验证|结果)"
     r"|(?:目标(?:为|是)|拟|计划|预期|待验证|有待验证|将).{0,16}(?:实现|达到|降低|提升|改善|测得|验证|结果)", re.I)
 CLAIM_LINE = re.compile(r"^\s*(?P<number>\d+)\s*[.．、]\s*(?P<text>.*?)\s*$")
@@ -702,8 +703,15 @@ def main() -> int:
         prior = paths["output"] / "prior_art.md"
         _validate_prior_art(case, sources, prior.read_text(encoding="utf-8") if prior.exists() else "")
 
-        outputs = "\n".join(path.read_text(encoding="utf-8") for path in paths["output"].glob("*.md"))
-        achieved = [clause for clause in output_clauses(outputs) if is_unsupported_achieved(clause)]
+        # A file boundary is also a sentence boundary.  Never let a qualifier in
+        # one Markdown file mask an achieved-result assertion in another merely
+        # because filesystem glob order differs across platforms.
+        achieved = [
+            clause
+            for path in sorted(paths["output"].glob("*.md"))
+            for clause in output_clauses(path.read_text(encoding="utf-8"))
+            if is_unsupported_achieved(clause)
+        ]
         unsupported = sum(not _achieved_evidence_matches(clause, evidence) for clause in achieved)
         families = [row.get("family_id") for row in sources if row.get("source_type") == "patent" and row.get("family_id")]
         duplicate_families = len(families) - len(set(families))
