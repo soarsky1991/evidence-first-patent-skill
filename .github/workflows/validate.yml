@@ -12,7 +12,7 @@ jobs:
       RELEASE_QA_DIR: ${{ github.workspace }}/.release-qa-${{ github.run_id }}
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v7
         with:
           python-version: '3.11'
       - name: Run dependency-free README quick start offline
