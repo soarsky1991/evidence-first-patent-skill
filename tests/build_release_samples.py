@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build the two synthetic rendered samples used by the v0.1.0 release gate."""
+"""Build the two synthetic rendered samples used by the release gate."""
 from __future__ import annotations
 
 import argparse

@@ -1,0 +1,24 @@
+name: Data Sources / 数据来源
+description: Propose a public, redistributable evidence source or source-handling improvement. / 提议可公开再分发的证据来源或来源处理改进。
+title: "data source / 数据来源: "
+body:
+  - type: input
+    id: source_url
+    attributes:
+      label: Canonical source URL / 规范来源 URL
+    validations:
+      required: true
+  - type: textarea
+    id: provenance
+    attributes:
+      label: License and provenance / 许可与来源链
+      description: Include license, access date, and redistribution boundary. / 请包含许可、访问日期和再分发边界。
+    validations:
+      required: true
+  - type: textarea
+    id: evidence_value
+    attributes:
+      label: Evidence value / 证据价值
+      description: Explain the records it can support and how it can be verified. / 说明可支持哪些记录及其核验方式。
+    validations:
+      required: true

@@ -15,3 +15,8 @@ demo-case/
 .workflow/final_status.json
 .workflow/release-manifest.json
 .workflow/link-report.json
+.workflow/ci-test-report-*.json
+.workflow/V0.2-BRAND-ACCEPTANCE.md
+.workflow/route-probes-v0.2.json
+.workflow/visual-candidates/
+.workflow/visual-prompts/

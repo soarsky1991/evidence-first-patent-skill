@@ -62,6 +62,7 @@ class PublicContentContractTests(unittest.TestCase):
                 self.assertIn(LEGAL_DISCLAIMER_ZH, page)
 
     def test_citation_metadata_names_a_public_project_author(self) -> None:
+        version = self.read("VERSION").strip()
         citation = self.read("CITATION.cff")
         self.assertRegex(citation, r"(?m)^authors:\s*$")
         self.assertIn('name: "Evidence-First Patent Skill contributors"', citation)
@@ -70,7 +71,7 @@ class PublicContentContractTests(unittest.TestCase):
             citation,
         )
         self.assertIn(
-            'license-url: "https://github.com/soarsky1991/evidence-first-patent-skill/blob/v0.1.0/NOTICE"',
+            f'license-url: "https://github.com/soarsky1991/evidence-first-patent-skill/blob/v{version}/NOTICE"',
             citation,
         )
         self.assertNotRegex(citation, r"(?m)^license:\s*$")
@@ -90,7 +91,7 @@ class PublicContentContractTests(unittest.TestCase):
             self.assertIn(text, page)
 
     def test_every_readme_facing_example_is_linked_from_the_readme_path(self) -> None:
-        root_readmes = (self.read("README.md"), self.read("README.zh-CN.md"))
+        root_readmes = (self.read("README.md"), self.read("README.en.md"))
         example_index = self.read("examples/README.md")
 
         for readme in root_readmes:
@@ -139,11 +140,11 @@ class PublicContentContractTests(unittest.TestCase):
                 for section in required_sections:
                     self.assertIn(section, issue)
 
-    def test_five_minute_readme_blocks_are_identical_and_local_stdlib_only(self) -> None:
+    def test_primary_readme_quick_start_blocks_are_identical_and_local_stdlib_only(self) -> None:
         blocks = []
         for relative_path, heading in (
-            ("README.md", "Five-minute local run"),
-            ("README.zh-CN.md", "五分钟本地运行"),
+            ("README.md", "3 分钟：确认本地工作流可用"),
+            ("README.en.md", "Three minutes: confirm the local workflow"),
         ):
             readme = self.read(relative_path)
             match = re.search(
@@ -160,6 +161,30 @@ class PublicContentContractTests(unittest.TestCase):
         forbidden = re.compile(r"\b(?:pip|venv|virtualenv|uv|poetry|conda|curl|wget|http|https)\b", re.I)
         for command in blocks[0]:
             self.assertIsNone(forbidden.search(command), command)
+
+    def test_external_structure_package_guidance_keeps_external_and_internal_layers_separate(self) -> None:
+        page = self.read(
+            "skill/draft-patents-evidence-first/references/external-structure-package.md"
+        )
+        for heading in (
+            "## 1. Separate the two deliverables",
+            "## 2. Build one master-assembly ledger before redrafting",
+            "## 5. Use a fixed response format for every annotation",
+            "## 6. Claim-synchronization boundary",
+            "## 7. Final acceptance gate",
+        ):
+            with self.subTest(heading=heading):
+                self.assertIn(heading, page)
+        for field in (
+            "**Annotation question**",
+            "**Clear conclusion**",
+            "**Revised structural explanation**",
+            "**Corresponding disclosure section**",
+            "**Figure number and marked location**",
+        ):
+            with self.subTest(field=field):
+                self.assertIn(field, page)
+        self.assertIn("clean external structure package", self.read("skill/draft-patents-evidence-first/SKILL.md"))
 
 
 if __name__ == "__main__":

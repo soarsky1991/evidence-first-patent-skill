@@ -1,16 +1,17 @@
-# v0.1.0 content notes
+# v0.2.0 content notes
 
-- Added bilingual first-screen README guidance and five-minute local interface.
-- Added method, data-contract, confidentiality, and bilingual-review references.
-- Added synthetic invention and utility-model demonstrations, plus a public mechanical-record reading exercise.
-- Added terminology, bad-draft audit, original provenance diagram, and media-license ledger.
-- Added the complete [16-fixture acceptance index](tests/fixtures/README.md) under `tests/fixtures`.
+- Promoted Chinese as the primary README entry point and added the Patent Jun visual and governance guidance.
+- Added an install-ready Skill-only archive alongside the deterministic source archive.
+- Added public-entry-point, brand, release-manifest, and archive-membership checks to CI.
+- Added the counsel-facing external-structure-package reference: it separates clean external documents from an internal sidecar, requires a master-assembly ledger, and defines a five-field annotation response format.
+- Kept the case-data `schema_version` at `0.1.0`; this release changes workflow guidance and distribution only.
 
-This is the first public, reproducible workflow release. It is not legal advice, a patentability opinion, a filing acceptance, or a guarantee of grant; substantive outputs still require qualified human review.
+This public release remains drafting and evidence-governance assistance, not legal advice, a patentability opinion, a filing acceptance, or a guarantee of grant. Substantive outputs still require qualified human review.
 
-The rendered release samples and deterministic source archive can be rebuilt locally with:
+The rendered release samples and deterministic archives can be rebuilt locally with:
 
 ```sh
-python tests/build_release_samples.py --repo . --output dist/v0.1.0/samples
-python tests/build_source_archive.py --repo . --output dist/v0.1.0/evidence-first-patent-skill-v0.1.0.zip
+python tests/build_release_samples.py --repo . --output dist/v0.2.0/samples
+python tests/build_source_archive.py --repo . --output dist/v0.2.0/evidence-first-patent-skill-v0.2.0.zip
+python tests/build_skill_archive.py --repo . --output dist/v0.2.0/draft-patents-evidence-first-v0.2.0.zip
 ```

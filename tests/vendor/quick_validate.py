@@ -8,9 +8,52 @@ import re
 import sys
 from pathlib import Path
 
-import yaml
+try:
+    import yaml
+except ModuleNotFoundError:  # Keep the install-layout check usable with stdlib Python.
+    yaml = None
 
 MAX_SKILL_NAME_LENGTH = 64
+
+
+def load_frontmatter(value: str):
+    """Load the small Skill frontmatter subset without requiring PyYAML.
+
+    The archive check only needs the flat public contract fields.  Use PyYAML
+    when it is available; otherwise support quoted or unquoted scalar values
+    and empty mapping-valued optional keys.  Nested metadata is accepted as an
+    opaque mapping because this validator checks only the permitted top-level
+    names plus the required string fields.
+    """
+    if yaml is not None:
+        return yaml.safe_load(value)
+
+    result = {}
+    active_mapping = None
+    for raw_line in value.splitlines():
+        if not raw_line.strip() or raw_line.lstrip().startswith("#"):
+            continue
+        if raw_line[0].isspace():
+            if active_mapping is None:
+                raise ValueError("nested content without a mapping key")
+            continue
+        if ":" not in raw_line:
+            raise ValueError("invalid frontmatter line")
+        key, raw_value = raw_line.split(":", 1)
+        key, raw_value = key.strip(), raw_value.strip()
+        if not key:
+            raise ValueError("empty frontmatter key")
+        if raw_value:
+            if (raw_value.startswith('"') and raw_value.endswith('"')) or (
+                raw_value.startswith("'") and raw_value.endswith("'")
+            ):
+                raw_value = raw_value[1:-1]
+            result[key] = raw_value
+            active_mapping = None
+        else:
+            result[key] = {}
+            active_mapping = key
+    return result
 
 
 def validate_skill(skill_path):
@@ -25,10 +68,10 @@ def validate_skill(skill_path):
     if not match:
         return False, "Invalid frontmatter format"
     try:
-        frontmatter = yaml.safe_load(match.group(1))
+        frontmatter = load_frontmatter(match.group(1))
         if not isinstance(frontmatter, dict):
             return False, "Frontmatter must be a YAML dictionary"
-    except yaml.YAMLError as exc:
+    except Exception as exc:
         return False, f"Invalid YAML in frontmatter: {exc}"
     allowed = {"name", "description", "license", "allowed-tools", "metadata"}
     unexpected = set(frontmatter) - allowed

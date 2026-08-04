@@ -3,11 +3,13 @@ name: draft-patents-evidence-first
 description: Build an evidence-governed Chinese invention or utility-model disclosure package from local engineering materials. Use when users need a bilingual (zh-CN/en-US) evidence inventory, prior-art comparison, disclosure draft, claim framework, limitation trace, or integrity check without inventing test results; not for filing, legal opinions, or public disclosure.
 ---
 
-# Evidence-First Patent Workflow / 证据优先专利工作流
+# Patent Jun / 专利君 — Evidence-First Patent Workflow
 
 Use this Skill for internal drafting preparation under the China (`CN`) invention and utility-model workflow. Treat every model output as a proposal. A qualified patent professional and a human disclosure decision remain mandatory.
 
 **Core rule:** Draft from evidence, not imagination / 从证据出发，不把目标写成结果。
+
+Patent Jun is the workflow's evidence steward and route guide. It is not patent counsel, an examiner, a patent office, or a filing authority, and it must not imply otherwise.
 
 ## Start safely
 
@@ -42,6 +44,8 @@ python scripts/resolve_language.py CASE_DIR --language zh-CN
 
 Read [workflow.md](references/workflow.md) for stage-level rules and [data-contract.md](references/data-contract.md) before creating records.
 
+When a patent professional returns annotated drawings or asks for a counsel-facing clarification package, read [external-structure-package.md](references/external-structure-package.md) before redrafting. Maintain a clean external structure package and a separate internal sidecar; never solve an external inconsistency by silently changing the approved technical baseline or formal claim scope.
+
 ## Evidence language
 
 - `measured`: recorded observation/test result with method/context, result, and source location.
@@ -50,6 +54,8 @@ Read [workflow.md](references/workflow.md) for stage-level rules and [data-contr
 - `designed`: a proposal, target, optional embodiment, or verification plan; phrase it as proposed or to be verified.
 
 Never present a target, design, or inference as an achieved result. Keep machine evidence labels in JSONL sidecars; use natural language such as “proposed embodiment” or “to be verified” in clean drafts.
+
+For a counsel-facing external structure package, do not copy evidence labels, source identities, review notes, search strategy, or unapproved uncertainty into the external documents or figure captions. A fact that remains unresolved after the human gate is not eligible to be restated as a settled external structural relation.
 
 ## Required checks
 

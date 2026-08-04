@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Write v0.1.0 source/artifact hashes without making a publication decision."""
+"""Write source/artifact hashes without making a publication decision."""
 from __future__ import annotations
 
 import argparse
@@ -7,6 +7,8 @@ import hashlib
 import json
 import subprocess
 from pathlib import Path
+
+from release_common import release_version
 
 
 def digest(path: Path) -> str:
@@ -41,6 +43,7 @@ def main() -> int:
         for path in asset_paths
     ]
     payload = {
+        "release_version": release_version(repo),
         "schema_version": "0.1.0",
         "candidate_content_sha256": hashlib.sha256(candidate_material).hexdigest(),
         "source_files": source_records,
