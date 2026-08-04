@@ -1,0 +1,25 @@
+name: Case Reviews / 案例复核
+description: Discuss a synthetic or public case review without sharing confidential material. / 讨论合成或公开案例复核，不要提交保密材料。
+title: "case review / 案例复核: "
+body:
+  - type: textarea
+    id: case_scope
+    attributes:
+      label: Public or synthetic scope / 公开或合成范围
+      description: Identify the public source or explain why the case is synthetic. / 标明公开来源，或说明为何为合成案例。
+    validations:
+      required: true
+  - type: textarea
+    id: evidence_question
+    attributes:
+      label: Evidence question / 证据问题
+      description: State the traceability, classification, or review question. / 说明溯源、分类或复核问题。
+    validations:
+      required: true
+  - type: checkboxes
+    id: confidentiality
+    attributes:
+      label: Confidentiality / 保密
+      options:
+        - label: I removed client material, personal data, credentials, and undisclosed invention details. / 我已移除客户材料、个人信息、凭据和未公开发明细节。
+          required: true

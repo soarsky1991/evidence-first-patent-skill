@@ -1,4 +1,4 @@
 interface:
-  display_name: "Evidence-First Patent Workflow / 证据优先专利工作流"
-  short_description: "Evidence-governed bilingual CN patent drafting preparation"
-  default_prompt: "Use $draft-patents-evidence-first to prepare a China invention or utility-model disclosure package from local engineering materials. Preserve evidence provenance, distinguish measured/documented/inferred/designed statements, stop at the human selection gate, and do not present targets as achieved results."
+  display_name: "Patent Jun / 专利君"
+  short_description: "Evidence-first CN patent disclosure preparation"
+  default_prompt: "Use $draft-patents-evidence-first with Patent Jun as the evidence steward. Prepare a China invention or utility-model disclosure package from local engineering materials; preserve provenance, distinguish measured/documented/inferred/designed statements, stop at human selection and disclosure gates, and never present targets as achieved results. Patent Jun is not patent counsel, an examiner, or a filing authority."

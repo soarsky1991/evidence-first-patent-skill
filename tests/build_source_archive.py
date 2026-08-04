@@ -7,14 +7,17 @@ import subprocess
 import zipfile
 from pathlib import Path
 
+from release_common import release_names
+
 
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--repo", type=Path, default=Path("."))
     parser.add_argument("--output", type=Path, required=True)
-    parser.add_argument("--prefix", default="evidence-first-patent-skill-v0.1.0")
+    parser.add_argument("--prefix", help="override the VERSION-derived archive root")
     args = parser.parse_args()
     repo, output = args.repo.resolve(), args.output.resolve()
+    prefix = args.prefix or release_names(repo)["source_prefix"]
     result = subprocess.run(
         ["git", "ls-files", "--cached", "--others", "--exclude-standard", "-z"],
         cwd=repo,
@@ -28,7 +31,7 @@ def main() -> int:
             source = repo / relative
             if not source.is_file():
                 continue
-            info = zipfile.ZipInfo(f"{args.prefix}/{relative.as_posix()}", date_time=(1980, 1, 1, 0, 0, 0))
+            info = zipfile.ZipInfo(f"{prefix}/{relative.as_posix()}", date_time=(1980, 1, 1, 0, 0, 0))
             info.compress_type = zipfile.ZIP_DEFLATED
             info.external_attr = (0o100644 & 0xFFFF) << 16
             info.flag_bits |= 0x800

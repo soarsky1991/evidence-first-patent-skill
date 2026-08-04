@@ -430,7 +430,11 @@ def clean_checkout_quick_start(repo: Path, scripts: Path, work: Path, runner: st
     offline, sentinel = socket_blocking_environment(work / "network-guard")
     checks: list[dict[str, Any]] = []
     readme = (clean / "README.md").read_text(encoding="utf-8")
-    match = re.search(r"^## Five-minute local run\n.*?^```sh\n(.*?)^```$", readme, flags=re.MULTILINE | re.DOTALL)
+    match = re.search(
+        r"^## (?:3 分钟：确认本地工作流可用|Five-minute local run)\n.*?^```sh\n(.*?)^```$",
+        readme,
+        flags=re.MULTILINE | re.DOTALL,
+    )
     if not match:
         return [{"name":"network_disabled_exact_readme_quick_start","passed":False,"detail":"README shell block missing"}], checks
     command_lines = [line.strip() for line in match.group(1).splitlines() if line.strip()]

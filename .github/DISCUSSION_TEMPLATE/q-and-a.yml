@@ -1,0 +1,25 @@
+name: Q&A / 问答
+description: Ask about the local evidence-first workflow, examples, or validation behavior. / 询问本地证据优先工作流、示例或校验行为。
+title: "question / 问题: "
+body:
+  - type: textarea
+    id: question
+    attributes:
+      label: Question / 问题
+      description: Describe the expected workflow behavior and the point that is unclear. / 说明预期的工作流行为和不清楚之处。
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction or context / 复现步骤或上下文
+      description: Use synthetic or public data only. / 仅使用合成或公开数据。
+    validations:
+      required: true
+  - type: checkboxes
+    id: privacy_check
+    attributes:
+      label: Privacy check / 隐私检查
+      options:
+        - label: My post contains no private source text, personal data, or credentials. / 本帖不包含私密来源文本、个人信息或凭据。
+          required: true

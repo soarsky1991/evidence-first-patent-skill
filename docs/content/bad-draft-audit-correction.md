@@ -18,6 +18,13 @@ Problem: the source states only that “the guide is beside the rail.” It prov
 
 问题：原始材料只记载“导向件位于导轨旁”，没有测量方法、样件、数值或测试记录；“消除”和“30%”被写成既成结果。
 
+## 1.1 Audit chain / 审计链
+
+| Original input / 原始输入 | Processing action / 处理动作 | Output / 输出物 | Cannot claim / 不能声称 | Invalidated if evidence changes / 证据变化后失效项 |
+|---|---|---|---|---|
+| “The guide is beside the rail.” / “导向件位于导轨旁。” | Preserve its locator; classify as `documented`; create only a structural evidence record and atomic trace. / 保留来源定位；分类为 `documented`；仅建立结构证据记录和原子溯源。 | EV-0001 and a trace for “guide beside rail.” / EV-0001 及“导向件位于导轨旁”的溯源。 | Vibration elimination, a 30% accuracy gain, or any achieved effect. / 消除振动、精度提高 30% 或任何既成效果。 | EV-0001, the structural trace, corrected-draft wording, and related scorecard coverage. / EV-0001、结构溯源、修正稿措辞及相关评分覆盖。 |
+| No test method, specimen, baseline, numeric observation, or test record. / 没有测试方法、样件、基线、数值观察或测试记录。 | Register an evidence gap; block `measured` classification and achieved-result language; add a verification-plan requirement. / 登记证据缺口；阻断 `measured` 分类和既成结果措辞；增加验证计划要求。 | An audit finding and a verification-matrix requirement. / 审计发现及验证矩阵要求。 | That the absence of evidence is a negative technical result, or that a target has been achieved. / 证据缺失本身是负面技术结果，或某项目标已经实现。 | The verification requirement and every downstream result statement if a method, specimen, baseline, threshold, or record is later added or revised. / 如后续新增或修订方法、样件、基线、阈值或记录，验证要求及所有下游结果陈述失效。 |
+
 ## 2. Evidence audit / 证据审计
 
 | Statement / 陈述 | Record / 记录 | Class / 等级 | Finding / 发现 |
@@ -39,3 +46,9 @@ Audit action: retain the missing-result finding, do not delete it. Add a verific
 The claim trace should map only the structural limitation to EV-0001. The target belongs in the verification matrix, not as measured evidence.
 
 权项溯源只能将结构限定映射至 EV-0001。性能目标应进入验证矩阵，不得登记为实测证据。
+
+## 4. What changes after new evidence arrives / 新证据到来后会发生什么
+
+New evidence is not a permission slip to keep the old correction unchanged. First check whether it identifies the specimen, method, baseline, measurement time, result, and source location. If any of those inputs changes, mark the affected verification row, result wording, scorecard metric, and any claim trace that relies on the interpretation as stale; then re-run human review. A result remains a target until the record supports its `measured` classification.
+
+新证据并不意味着可以原样保留旧修正稿。应先核对其是否写明样件、方法、基线、测量时间、结果和来源定位。上述任一输入发生变化时，受影响的验证行、结果措辞、评分指标以及依赖该解释的任何权项溯源都应标为过期，再重新进行人工复核。在记录足以支持 `measured` 分类前，结果仍只是目标。

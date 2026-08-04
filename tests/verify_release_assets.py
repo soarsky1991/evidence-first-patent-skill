@@ -13,6 +13,11 @@ import zipfile
 import stat
 from pathlib import Path, PurePosixPath
 
+from release_common import release_names, release_version
+
+
+SKILL_RELATIVE = Path("skill/draft-patents-evidence-first")
+
 
 def digest(payload: bytes) -> str:
     return hashlib.sha256(payload).hexdigest()
@@ -112,16 +117,59 @@ def verify_public_sample_archive(path: Path, repo: Path, errors: list[str]) -> N
         errors.append(f"invalid public sample archive {path.name}: {exc}")
 
 
+def verify_skill_archive(
+    path: Path,
+    repo: Path,
+    prefix: str,
+    source_records: dict[str, dict[str, object]],
+    errors: list[str],
+) -> None:
+    skill_root = repo / SKILL_RELATIVE
+    expected_files = {
+        f"{prefix}/{Path(name).relative_to(SKILL_RELATIVE).as_posix()}"
+        for name in source_records
+        if Path(name).is_relative_to(SKILL_RELATIVE)
+    }
+    try:
+        with zipfile.ZipFile(path) as archive:
+            infos = archive.infolist()
+            counts = Counter(info.filename for info in infos)
+            duplicates = sorted(name for name, count in counts.items() if count > 1)
+            if duplicates:
+                errors.append(f"skill archive has duplicate members: {duplicates}")
+            if set(counts) != expected_files:
+                errors.append("skill archive membership differs from the Skill source tree")
+            if f"{prefix}/SKILL.md" not in counts:
+                errors.append("skill archive is not install-ready: missing root SKILL.md")
+            if any(name.startswith(f"{prefix}/skill/") for name in counts):
+                errors.append("skill archive contains an extra skill/ directory layer")
+            bad = archive.testzip()
+            if bad:
+                errors.append(f"skill archive CRC failure: {bad}")
+            for member in expected_files & set(counts):
+                relative = Path(*PurePosixPath(member).parts[1:])
+                if digest(archive.read(member)) != digest((skill_root / relative).read_bytes()):
+                    errors.append(f"skill archive SHA-256 mismatch: {relative.as_posix()}")
+    except (OSError, zipfile.BadZipFile) as exc:
+        errors.append(f"invalid skill archive: {exc}")
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--repo", type=Path, default=Path("."))
     parser.add_argument("--release", type=Path, required=True)
     parser.add_argument("--manifest", type=Path, required=True)
     parser.add_argument("--source-archive", type=Path, required=True)
-    parser.add_argument("--prefix", default="evidence-first-patent-skill-v0.1.0")
+    parser.add_argument("--skill-archive", type=Path, required=True)
+    parser.add_argument("--prefix", help="override the VERSION-derived source archive root")
+    parser.add_argument("--skill-prefix", help="override the install-ready Skill archive root")
     args = parser.parse_args()
     repo, release = args.repo.resolve(), args.release.resolve()
     manifest_path, source_archive = args.manifest.resolve(), args.source_archive.resolve()
+    skill_archive = args.skill_archive.resolve()
+    names = release_names(repo)
+    source_prefix = args.prefix or names["source_prefix"]
+    skill_prefix = args.skill_prefix or names["skill_prefix"]
     errors: list[str] = []
 
     try:
@@ -133,6 +181,14 @@ def main() -> int:
 
     source_records = index_records(manifest.get("source_files"), "source_files", errors)
     asset_records = index_records(manifest.get("release_assets"), "release_assets", errors)
+    if manifest.get("release_version") != release_version(repo):
+        errors.append("release manifest release_version differs from VERSION")
+    if manifest.get("schema_version") != "0.1.0":
+        errors.append("release manifest schema_version must remain 0.1.0")
+    if source_archive.name != names["source_archive"]:
+        errors.append("source archive filename differs from VERSION-derived release name")
+    if skill_archive.name != names["skill_archive"]:
+        errors.append("skill archive filename differs from VERSION-derived release name")
 
     selection = subprocess.run(
         ["git", "ls-files", "--cached", "--others", "--exclude-standard", "-z"],
@@ -163,6 +219,7 @@ def main() -> int:
         verify_file(release / name, record, "release asset", errors)
     for sample_name in ("BI-PAIR-09.zip", "ZH-INV-01.zip"):
         verify_public_sample_archive(release / sample_name, repo, errors)
+    verify_skill_archive(skill_archive, repo, skill_prefix, source_records, errors)
 
     try:
         lines = [line for line in (release / "SHA256SUMS.txt").read_text(encoding="utf-8").splitlines() if line]
@@ -183,14 +240,14 @@ def main() -> int:
             duplicates = sorted(name for name, count in counts.items() if count > 1)
             if duplicates:
                 errors.append(f"source archive has duplicate members: {duplicates}")
-            expected_members = {f"{args.prefix}/{name}" for name in source_records}
+            expected_members = {f"{source_prefix}/{name}" for name in source_records}
             if set(counts) != expected_members:
                 errors.append("source archive membership differs from source_files")
             bad = archive.testzip()
             if bad:
                 errors.append(f"source archive CRC failure: {bad}")
             for name, record in source_records.items():
-                member = f"{args.prefix}/{name}"
+                member = f"{source_prefix}/{name}"
                 if counts.get(member) != 1:
                     continue
                 info = archive.getinfo(member)

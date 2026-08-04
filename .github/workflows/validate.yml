@@ -33,6 +33,8 @@ jobs:
         run: python tests/vendor/quick_validate.py skill/draft-patents-evidence-first
       - name: Run unit tests
         run: python -m unittest discover -s tests -p 'test_*.py' -v
+      - name: Check primary README links, anchors, and public brand contract
+        run: python tests/test_release_contract.py
       - name: Execute fixture acceptance matrix
         env:
           EFPS_FIXTURE_DIAGNOSTICS: '1'
@@ -63,10 +65,15 @@ jobs:
         run: |
           test ! -e "$RELEASE_QA_DIR"
           mkdir -p "$RELEASE_QA_DIR"
+          SOURCE_ARCHIVE="$(python tests/release_common.py --repo . --format source-archive)"
+          SKILL_ARCHIVE="$(python tests/release_common.py --repo . --format skill-archive)"
           python tests/build_release_samples.py --repo . --output "$RELEASE_QA_DIR/samples"
-          python tests/build_source_archive.py --repo . --output "$RELEASE_QA_DIR/evidence-first-patent-skill-v0.1.0.zip"
+          python tests/build_source_archive.py --repo . --output "$RELEASE_QA_DIR/$SOURCE_ARCHIVE"
+          python tests/build_skill_archive.py --repo . --output "$RELEASE_QA_DIR/$SKILL_ARCHIVE"
           python tests/build_release_manifest.py --repo . --release "$RELEASE_QA_DIR" --output "$RELEASE_QA_DIR/release-manifest.json"
       - name: Verify rebuilt release membership, hashes, CRC, and metadata
         run: |
-          python tests/verify_release_assets.py --repo . --release "$RELEASE_QA_DIR" --manifest "$RELEASE_QA_DIR/release-manifest.json" --source-archive "$RELEASE_QA_DIR/evidence-first-patent-skill-v0.1.0.zip"
+          SOURCE_ARCHIVE="$(python tests/release_common.py --repo . --format source-archive)"
+          SKILL_ARCHIVE="$(python tests/release_common.py --repo . --format skill-archive)"
+          python tests/verify_release_assets.py --repo . --release "$RELEASE_QA_DIR" --manifest "$RELEASE_QA_DIR/release-manifest.json" --source-archive "$RELEASE_QA_DIR/$SOURCE_ARCHIVE" --skill-archive "$RELEASE_QA_DIR/$SKILL_ARCHIVE"
           python skill/draft-patents-evidence-first/scripts/inspect_artifacts.py "$RELEASE_QA_DIR" --format json
