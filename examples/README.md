@@ -24,6 +24,12 @@ The synthetic concept is a product housing, guide groove, retaining shoulder, an
 
 该合成概念包括产品壳体、导向槽、保持肩和可拆盖；独立权利要求以产品结构及其关系为主题，而非方法。见[双语工作示例](synthetic-utility-model.md)。
 
+## Redacted fixture / 脱敏夹具
+
+The redacted fixture case is a public-safe mechanical teaching example. It keeps only abstract support, upper-contact, and verification relations, and removes dimensions, materials, drawings, identifiers, and results. See [the redacted fixture case](redacted-fixture-case.md).
+
+脱敏夹具案例是可公开的机械结构教学示例，只保留承托、上方压持和验证关系，删除尺寸、材料、图纸、标识和结果。见[脱敏夹具案例](redacted-fixture-case.md)。
+
 The examples are workflow demonstrations, not novelty opinions or filing-ready claims.
 
 这些示例只是工作流演示，不构成新颖性意见，也不是可直接申请的权利要求。

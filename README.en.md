@@ -16,6 +16,33 @@ This material provides drafting and evidence-governance assistance, not legal ad
 
 中文主入口：[README.md](README.md) · Legacy Chinese link: [README.zh-CN.md](README.zh-CN.md)
 
+## Patent Jun in 30 seconds
+
+`Intake → source locator → evidence class → concept/claim limitation → trace check → human review package`
+
+| What you bring | What Patent Jun does first | What you receive |
+|---|---|---|
+| Drawings, records, meeting notes | Scan for sensitive material, locate sources, preserve wording | `sources.jsonl`, `evidence.jsonl` |
+| An engineer's improvement idea | Mark it `designed`, never as a measured result | Candidate concepts, verification matrix |
+| A disclosure or claim draft | Split it into atomic limitations and trace them back | `claim_trace.jsonl`, review package |
+| Chinese, English, or bilingual material | Compare objects, relations, numbers, and conditions | Conflict records and a human-review gate |
+
+The core action is not to decide for you. It is to make every conclusion answer three questions: **Where did it come from? Which evidence class is it? What still needs confirmation?**
+
+### A public-safe redacted case
+
+Use the [redacted fixture case](examples/redacted-fixture-case.md) for promotion, not a user's pending fixture. It keeps only abstract relations—an underside support, an upper frame with resilient contacts, and a proposal to verify different preloads by zone. It removes real dimensions, materials, thread specifications, part-number combinations, hole locations, photos, CAD, suppliers, application numbers, and performance values. The method remains visible without turning an undisclosed invention into a public disclosure.
+
+### How the Patent Jun character is used
+
+The wide Hero on GitHub carries recognition and the workflow promise; the [vertical cover](public-assets/promotion/patent-jun-redskill-cover.png) gives RedSkill a compact visual entry point for “inspect the source, record the evidence, stop at human review.” The magnifier means source checking, the clipboard means evidence records, and the engineering jacket means a technical context. The character is not counsel, an examiner, or a filing authority; no gavel, scales, official seal, government emblem, or approval trophy is used.
+
+Good companion lines are: **Draft from evidence, not imagination.** **A target is not a result.** **Every limitation needs an origin.**
+
+<p align="center">
+  <img src="public-assets/promotion/patent-jun-redskill-cover.png" alt="Patent Jun reviewing four abstract evidence cards in the RedSkill vertical showcase cover" width="280">
+</p>
+
 ## What it solves
 
 Engineering material often mixes facts, experience, design ideas, and performance targets. Without an evidence pass, a draft can turn “we intend to achieve” into “we achieved,” or introduce a claim limitation with no recorded origin. This project turns those risks into inspectable records and blocking states.
@@ -222,6 +249,7 @@ Conflicts remain visible and block acceptance. Deleting a problem statement is n
 | [Synthetic utility model](examples/synthetic-utility-model.md) | How product structure and structural relations enter a claim | Method steps are not substituted for structural limitations |
 | [Bad draft → audit → correction](docs/content/bad-draft-audit-correction.md) | Why an unsupported “30% improvement” is blocked | The correction still makes no achieved-result claim |
 | [Public mechanical records](examples/public-mechanical-case.md) | How to read publication dates, family metadata, and expressly disclosed structural fields | A public record is not a legal-status or novelty conclusion |
+| [Redacted fixture case](examples/redacted-fixture-case.md) | How to show structural relations, evidence classes, and claim tracing safely | Synthetic teaching material; no real application details |
 
 See the [example index](examples/README.md). Every example and fixture is synthetic unless it is explicitly marked as a public record.
 
@@ -335,4 +363,5 @@ flowchart LR
 - [Mechanical figure-set consistency](skill/draft-patents-evidence-first/references/mechanical-figure-consistency.md)
 - [Bilingual terminology](docs/content/terminology.md)
 - [Patent Jun voice and visual-copy guide](docs/brand/patent-jun.md)
+- [RedSkill / GitHub showcase pack](docs/promotion/redskill-listing.md)
 - [Release notes](RELEASE_NOTES.md) / [中文发布说明](RELEASE_NOTES.zh-CN.md)

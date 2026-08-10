@@ -50,3 +50,5 @@
 最终角色、Hero 和 Social Preview 使用 OpenAI 图像生成工具制作。生成提示、候选、人工审核结果、裁切或压缩说明、文件尺寸及 SHA-256 记录在[媒体许可台账](../../public-assets/media-ledger.md)和[视觉说明](../content/social-preview-brief.md)中。项目原创视觉依 `CC BY 4.0` 发布。
 
 候选图只能用于内部选择。发布前必须确认人物一致性、文字拼写、无敏感信息、无第三方标识，也不能出现实测结果或授权暗示。
+
+RedSkill 展示封面使用 `public-assets/promotion/patent-jun-redskill-cover.png`，提示词和审核记录见 `docs/content/redskill-cover-brief.md`。它只表达“查来源—记证据—人工复核”的抽象关系，不承载真实案件细节。
