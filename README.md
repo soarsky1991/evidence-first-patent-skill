@@ -60,7 +60,7 @@ English: [README.en.md](README.en.md) · 旧中文链接兼容页：[README.zh-C
 - 合成样例、公开记录和真实项目资料必须分开管理；
 - 自动检查通过后仍停在人工复核门前。
 
-已发布的 `v0.1.0` 保留为可复现基线；本分支正在准备 `v0.2.0` 的中文主入口、“专利君”视觉和治理改进。二者都不改变案件数据的 `schema_version: 0.1.0`。
+`v0.2.0` 保留为中文主入口、“专利君”视觉和对外结构包基线；`v0.2.1` 增加多视图机械附图的同源建模、运动状态、净线验收和独立复核门禁。案件数据的 `schema_version: 0.1.0` 保持不变。
 
 ## 三种使用方式
 
@@ -331,6 +331,8 @@ flowchart LR
 - [十阶段工作流](skill/draft-patents-evidence-first/references/workflow.md)
 - [数据接口与指标](skill/draft-patents-evidence-first/references/data-contract.md)
 - [双语审核](skill/draft-patents-evidence-first/references/bilingual-review.md)
+- [对外结构包](skill/draft-patents-evidence-first/references/external-structure-package.md)
+- [机械附图组一致性](skill/draft-patents-evidence-first/references/mechanical-figure-consistency.md)
 - [双语术语表](docs/content/terminology.md)
 - [“专利君”人格与视觉文字规范](docs/brand/patent-jun.md)
 - [发布说明](RELEASE_NOTES.zh-CN.md) / [English release notes](RELEASE_NOTES.md)

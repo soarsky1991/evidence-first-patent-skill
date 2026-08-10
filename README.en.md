@@ -60,7 +60,7 @@ The repository does not turn passing tests into a claim about grant rate, drafti
 - synthetic examples, public records, and real project material remain separate;
 - automated checks still stop before a human-review gate.
 
-Published `v0.1.0` remains the reproducible baseline. This branch prepares the Chinese-first entry point, Patent Jun visuals, and governance changes for `v0.2.0`. The case-data `schema_version: 0.1.0` remains independent of the repository release version.
+`v0.2.0` remains the Chinese-first, Patent Jun, and external-structure-package baseline. `v0.2.1` adds shared-geometry, movement-state, clean-line, and independent-review gates for multi-view mechanical figures. The case-data `schema_version: 0.1.0` remains unchanged.
 
 ## Three ways to use it
 
@@ -331,6 +331,8 @@ flowchart LR
 - [Ten-stage workflow](skill/draft-patents-evidence-first/references/workflow.md)
 - [Data interfaces and scorecard](skill/draft-patents-evidence-first/references/data-contract.md)
 - [Bilingual limitation review](skill/draft-patents-evidence-first/references/bilingual-review.md)
+- [Counsel-facing structure package](skill/draft-patents-evidence-first/references/external-structure-package.md)
+- [Mechanical figure-set consistency](skill/draft-patents-evidence-first/references/mechanical-figure-consistency.md)
 - [Bilingual terminology](docs/content/terminology.md)
 - [Patent Jun voice and visual-copy guide](docs/brand/patent-jun.md)
 - [Release notes](RELEASE_NOTES.md) / [中文发布说明](RELEASE_NOTES.zh-CN.md)

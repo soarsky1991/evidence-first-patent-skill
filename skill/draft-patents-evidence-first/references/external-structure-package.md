@@ -26,6 +26,8 @@ Create and review one ledger before writing or redrawing. Each row must identify
 
 Use one master assembly for all views. A general assembly view, a plan view, a component sectional view, a comparative dimension-chain view, and a local contact section may show different projections of the same device, but must not become separately invented structures.
 
+For a mechanical figure set with moving members, stop faces, clearances, disassembly, or comparative dimensions, apply [mechanical-figure-consistency.md](mechanical-figure-consistency.md). Its state-aware ledger and shared sectional primitive are the controlling method for preventing cross-view geometry drift.
+
 ## 3. Draft external text in checkable Chinese patent language
 
 Use direct structural verbs such as “设置”“形成”“固定”“螺纹配合”“穿设”“抵接”“连通”“承托”“压持”“轴向移动” and “沿轴向取出”. Define a term once, then use the same name and sign throughout.
@@ -82,5 +84,7 @@ Before handing off an external structure package, independently check:
 - figures are derived from one master assembly and have no caption, sign, arrow, section, or dimension drift;
 - external files contain no internal review language or unsupported effect claim; and
 - the rendered documents have been visually reviewed for page breaks, clipped callouts, unreadable dimensions, missing glyphs, and figure/text mismatch.
+
+For multi-view mechanical figures, the rendered check must include both normal and maximum-travel states where applicable, an interference-free removal path, visibly open slot mouths, a closed support/contact chain, and a clean-line text-token audit. Review a normal-resolution render and a high-resolution render rather than relying on the editable source alone.
 
 Keep review records and acceptance findings in the internal sidecar. An external package may be ready for professional review, but it is never a substitute for qualified counsel review before filing or disclosure.

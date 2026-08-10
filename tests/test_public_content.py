@@ -186,6 +186,46 @@ class PublicContentContractTests(unittest.TestCase):
                 self.assertIn(field, page)
         self.assertIn("clean external structure package", self.read("skill/draft-patents-evidence-first/SKILL.md"))
 
+    def test_mechanical_figure_consistency_requires_shared_geometry_and_rendered_gates(self) -> None:
+        relative = (
+            "skill/draft-patents-evidence-first/references/"
+            "mechanical-figure-consistency.md"
+        )
+        page = self.read(relative)
+        for heading in (
+            "## 1. Freeze one structural truth before drawing",
+            "## 2. Derive every view from a shared sectional primitive",
+            "## 3. Prove movement and absence of interference",
+            "## 4. Separate interfaces and preserve the removal path",
+            "## 5. Keep openings, projections, and contact zones topologically honest",
+            "## 7. Produce annotated and clean-line variants from one source",
+            "## 8. Run independent repair and adversarial review",
+            "## 9. Rendered acceptance gate",
+        ):
+            with self.subTest(heading=heading):
+                self.assertIn(heading, page)
+
+        for required in (
+            "Normal state",
+            "Maximum-travel state",
+            "real central passage",
+            "both ends must be visibly open",
+            "zero unresolved P0/P1 findings",
+            "300 dpi and 600 dpi",
+        ):
+            with self.subTest(required=required):
+                self.assertIn(required, page)
+
+        skill = self.read("skill/draft-patents-evidence-first/SKILL.md")
+        external = self.read(
+            "skill/draft-patents-evidence-first/references/external-structure-package.md"
+        )
+        readme_zh = self.read("README.md")
+        readme_en = self.read("README.en.md")
+        for source in (skill, external, readme_zh, readme_en):
+            with self.subTest(source=source[:40]):
+                self.assertIn("mechanical-figure-consistency.md", source)
+
 
 if __name__ == "__main__":
     unittest.main()
