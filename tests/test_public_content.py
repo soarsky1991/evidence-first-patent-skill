@@ -28,6 +28,7 @@ README_FACING_EXAMPLES = (
     "docs/content/bad-draft-audit-correction.md",
     "examples/README.md",
     "examples/public-mechanical-case.md",
+    "examples/redacted-fixture-case.md",
     "examples/synthetic-invention.md",
     "examples/synthetic-utility-model.md",
 )
@@ -97,6 +98,7 @@ class PublicContentContractTests(unittest.TestCase):
         for readme in root_readmes:
             self.assertIn("examples/README.md", readme)
             self.assertIn("examples/public-mechanical-case.md", readme)
+            self.assertIn("examples/redacted-fixture-case.md", readme)
         self.assertIn("synthetic-invention.md", example_index)
         self.assertIn("synthetic-utility-model.md", example_index)
         self.assertIn("该合成概念是一种导轨导向结构", example_index)

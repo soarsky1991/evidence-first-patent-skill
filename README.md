@@ -16,6 +16,33 @@
 
 English: [README.en.md](README.en.md) · 旧中文链接兼容页：[README.zh-CN.md](README.zh-CN.md)
 
+## 30 秒看懂专利君
+
+`资料盘点 → 来源定位 → 证据分类 → 发明点/权项限定 → 溯源检查 → 人工复核包`
+
+| 你拿来什么 | 专利君先做什么 | 你拿到什么 |
+|---|---|---|
+| 图纸、记录、会议纪要 | 脱敏、定位来源、保留原文 | `sources.jsonl`、`evidence.jsonl` |
+| 工程师的改进设想 | 标为 `designed`，不冒充实测 | 候选发明点、验证矩阵 |
+| 交底书和权利要求草案 | 拆成原子限定并回指证据 | `claim_trace.jsonl`、审阅包 |
+| 中文、英文或双语材料 | 对象、关系、数值、条件逐项比对 | 冲突记录和人工复核入口 |
+
+它的核心动作不是“替你下结论”，而是让每个结论都能回答：**来自哪里？属于哪一类证据？还缺什么确认？**
+
+### 一个可公开讲的脱敏案例
+
+推广时使用[脱敏夹具案例](examples/redacted-fixture-case.md)，而不是用户正在申请的真实夹具。案例只保留“板件由下方承托、上方框架带弹性压持件、不同区域的预紧方案需要验证”这些抽象关系；删除真实尺寸、材料、螺纹规格、零件组合、孔位、照片、CAD、供应商、申请号和性能数值。这样既能展示证据闭环，也不会把待申请方案变成公开披露。
+
+### 专利君的人物形象怎么用
+
+GitHub 首屏使用宽幅 Hero，承担品牌识别和工作流承诺；RedSkill 使用[竖版封面](public-assets/promotion/patent-jun-redskill-cover.png)，承担“看来源、记证据、停在人工复核”的视觉入口。放大镜表示查来源，夹板表示记录证据，工程服表示技术场景；人物不是律师、审查员或申请机构，不使用法槌、天平、公章、政府纹章或授权奖杯。
+
+适合与人物并置的短句是：**先找证据，再写结论。**、**这是目标，不是结果。**、**每个限定，都要有出处。**
+
+<p align="center">
+  <img src="public-assets/promotion/patent-jun-redskill-cover.png" alt="专利君查看四张抽象证据卡片的 RedSkill 竖版宣传封面" width="280">
+</p>
+
 ## 它解决什么问题
 
 工程资料里经常同时出现事实、经验判断、设计设想和性能目标。若不先分清这些陈述，草案很容易把“希望达到”写成“已经实现”，或让一项权利要求找不到出处。本项目把这类风险变成可以检查的数据和状态：
@@ -222,6 +249,7 @@ flowchart LR
 | [合成实用新型案例](examples/synthetic-utility-model.md) | 产品结构及其关系如何进入权利要求 | 不把方法步骤当成结构限定 |
 | [错误稿→审计→修正稿](docs/content/bad-draft-audit-correction.md) | 无依据的“提高 30%”为什么必须被拦下 | 修正稿仍不声称已经达到效果 |
 | [公开机械记录阅读练习](examples/public-mechanical-case.md) | 如何读取公开日、家族元数据和明示结构字段 | 公开记录不等于法律状态或新颖性结论 |
+| [脱敏夹具案例](examples/redacted-fixture-case.md) | 如何公开展示结构关系、证据类别和权项溯源 | 合成教学材料，不含真实申请细节 |
 
 [查看全部合成示例](examples/README.md)。示例与 fixture 除明确标为公开记录者外均为合成内容。
 
@@ -335,4 +363,5 @@ flowchart LR
 - [机械附图组一致性](skill/draft-patents-evidence-first/references/mechanical-figure-consistency.md)
 - [双语术语表](docs/content/terminology.md)
 - [“专利君”人格与视觉文字规范](docs/brand/patent-jun.md)
+- [RedSkill / GitHub 展示包](docs/promotion/redskill-listing.md)
 - [发布说明](RELEASE_NOTES.zh-CN.md) / [English release notes](RELEASE_NOTES.md)
