@@ -49,7 +49,7 @@ class ReleaseContractTests(unittest.TestCase):
 
     def test_version_is_single_source_for_release_metadata(self) -> None:
         version = release_version(REPOSITORY)
-        self.assertEqual(version, "0.2.0")
+        self.assertEqual(version, "0.2.1")
         citation = self.read("CITATION.cff")
         self.assertRegex(citation, rf'(?m)^version: "{re.escape(version)}"$')
         self.assertRegex(citation, r'(?m)^date-released: "RELEASE_DATE_PENDING"$')

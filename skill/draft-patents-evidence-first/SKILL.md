@@ -44,7 +44,7 @@ python scripts/resolve_language.py CASE_DIR --language zh-CN
 
 Read [workflow.md](references/workflow.md) for stage-level rules and [data-contract.md](references/data-contract.md) before creating records.
 
-When a patent professional returns annotated drawings or asks for a counsel-facing clarification package, read [external-structure-package.md](references/external-structure-package.md) before redrafting. Maintain a clean external structure package and a separate internal sidecar; never solve an external inconsistency by silently changing the approved technical baseline or formal claim scope.
+When a patent professional returns annotated drawings or asks for a counsel-facing clarification package, read [external-structure-package.md](references/external-structure-package.md) before redrafting. For a multi-view mechanical figure set, also read [mechanical-figure-consistency.md](references/mechanical-figure-consistency.md) and derive the views from one state-aware structural primitive. Maintain a clean external structure package and a separate internal sidecar; never solve an external inconsistency by silently changing the approved technical baseline or formal claim scope.
 
 ## Evidence language
 
