@@ -2,7 +2,7 @@
 
 **Draft from evidence, not imagination.**
 
-![Patent Jun holding an evidence clipboard and magnifier beside a source-to-claim-limitation review path.](public-assets/readme/hero-en.jpg)
+![One claim paper and one evidence paper are joined by a single clip line with one verification dot / 一张主张纸和一张证据纸由一条夹线连接，并带有一个验证点。](docs/assets/social-preview.png)
 
 Turn scattered engineering notes, drawings, test records, and public patent documents into a reviewable technical disclosure package with an explicit evidence trail. This Skill covers China (CN) invention and utility-model disclosure work in Chinese, English, or bilingual mode. It separates measured observations, documented statements, inferences, and designed proposals, then requires every claim limitation to trace to evidence or remain visibly subject to human review.
 
@@ -14,7 +14,7 @@ This material provides drafting and evidence-governance assistance, not legal ad
 
 [Run the three-minute check](#three-minutes-confirm-the-local-workflow) · [Walk through a complete sample](#fifteen-minutes-follow-evidence-to-a-review-package) · [Download a validated release](https://github.com/soarsky1991/evidence-first-patent-skill/releases)
 
-中文主入口：[README.md](README.md) · Legacy Chinese link: [README.zh-CN.md](README.zh-CN.md)
+中文主入口：[README.md](README.md) · Legacy Chinese link: [README.zh-CN.md](README.zh-CN.md) · [Case index](docs/cases/README.md) · [Contributing](CONTRIBUTING.md) · [Cross-repository navigation](docs/cross-repo-navigation.md)
 
 ## What it solves
 
@@ -28,7 +28,7 @@ Engineering material often mixes facts, experience, design ideas, and performanc
 | Disclosure and claim framework | Split claims into atomic limitations and trace each one | `claim_trace.jsonl`, disclosure draft |
 | Chinese and English drafts | Compare objects, relations, numbers, conditions, and dependencies | Conflict records or an atomic-consistency result |
 
-The shortest proof of value is the [bad draft → evidence audit → corrected draft](docs/content/bad-draft-audit-correction.md): an unsupported “30% improvement” is blocked rather than polished into a false result.
+The shortest proof of value is the [bad draft → evidence audit → corrected draft](docs/cases/30-percent-audit.md): an unsupported “30% improvement” is blocked rather than polished into a false result.
 
 ![An unsupported result claim is audited and rewritten as a proposal that still requires testing; evidence class controls assertion strength.](public-assets/readme/bad-draft-audit-correction.jpg)
 

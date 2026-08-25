@@ -12,3 +12,9 @@ Run the local validators relevant to your change, preserve source and license fi
 4. **[Improve image-evidence extraction tests](docs/good-first-issues/04-image-evidence-fixture.md).** Add a fully synthetic image/PDF fixture with page or figure coordinates, expected OCR text, and a confidentiality seed that must be detected. Do not submit screenshots, real client drawings, or unknown-license media.
 
 Use the relevant Issue Form before opening a pull request. A contribution is reviewable only when its source, license, expected assertion, and confidentiality boundary are explicit.
+
+## Public documentation contract
+
+Documentation and cases must state whether they are `synthetic`, licensed public material, or a reproducible local fixture. A successful validator is process evidence only: do not convert it into a claim of filing readiness, patent grant, legal status, customer authorization, or real-world technical performance. Before proposing a public visual, reserve its asset path and register its source, review result, and SHA-256; do not submit a hand-made placeholder as a final preview.
+
+Public maintainer attribution uses 马智辰 (Zhichen Ma / 智辰老师), `soarhigh1991@gmail.com`, and X `@AI2studio`. Do not add employer, job, client, location, historical aliases, private contact data, or social profiles to public-facing material.
