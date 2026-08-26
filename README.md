@@ -2,7 +2,7 @@
 
 **从证据出发，不把目标写成结果。**
 
-![专利君拿着证据夹板和放大镜，旁边标出从来源到权利要求限定的核对路径。](public-assets/readme/hero-zh.jpg)
+![一张主张纸和一张证据纸由一条夹线连接，并带有一个验证点 / One claim paper and one evidence paper are joined by a single clip line with one verification dot.](docs/assets/social-preview.png)
 
 把会议纪要、图纸、测试记录和公开专利中的信息，整理成可核对、可追溯、可交给专业人员继续审阅的技术交底资料。这个 Skill 用于中国发明和实用新型案件的交底辅助，支持中文、英文和双语案件；它会区分实测、已记载、推断和拟议设计，并要求每项权利要求限定都能追溯到来源，或者明确标为待审核方案。
 
@@ -14,7 +14,7 @@
 
 [先跑 3 分钟自检](#3-分钟确认本地工作流可用) · [用 15 分钟看完整样例](#15-分钟从证据走到可审阅包) · [下载已验收版本](https://github.com/soarsky1991/evidence-first-patent-skill/releases)
 
-English: [README.en.md](README.en.md) · 旧中文链接兼容页：[README.zh-CN.md](README.zh-CN.md)
+English: [README.en.md](README.en.md) · 旧中文链接兼容页：[README.zh-CN.md](README.zh-CN.md) · [案例索引](docs/cases/README.md) · [贡献](CONTRIBUTING.md) · [跨仓导航](docs/cross-repo-navigation.md)
 
 ## 它解决什么问题
 
@@ -28,7 +28,7 @@ English: [README.en.md](README.en.md) · 旧中文链接兼容页：[README.zh-C
 | 交底书与权利要求框架 | 拆成原子限定并逐项溯源 | `claim_trace.jsonl`、交底书草案 |
 | 中英文版本 | 比对对象、关系、数值、条件和从属关系 | 双语冲突记录或一致性结果 |
 
-最直观的例子是：[“定位精度提高 30%”如何被证据审计拦下，并改成待验证陈述](docs/content/bad-draft-audit-correction.md)。
+最直观的例子是：[“定位精度提高 30%”如何被证据审计拦下，并改成待验证陈述](docs/cases/30-percent-audit.md)。
 
 ![错误稿经过证据审计后，改写为待试验验证的拟议方案；证据等级决定表述强度。](public-assets/readme/bad-draft-audit-correction.jpg)
 
@@ -223,7 +223,7 @@ flowchart LR
 | [错误稿→审计→修正稿](docs/content/bad-draft-audit-correction.md) | 无依据的“提高 30%”为什么必须被拦下 | 修正稿仍不声称已经达到效果 |
 | [公开机械记录阅读练习](examples/public-mechanical-case.md) | 如何读取公开日、家族元数据和明示结构字段 | 公开记录不等于法律状态或新颖性结论 |
 
-[查看全部合成示例](examples/README.md)。示例与 fixture 除明确标为公开记录者外均为合成内容。
+[查看全部合成示例](examples/README.md) · [案例索引与 3 分钟体验](docs/cases/README.md)。示例与 fixture 除明确标为公开记录者外均为合成内容。
 
 ## 常见问题
 
@@ -303,6 +303,8 @@ flowchart LR
 
 [选一个 good first issue](docs/good-first-issues/01-public-mechanical-case.md) · [补充术语](docs/good-first-issues/02-bilingual-terminology.md) · [讨论法域适配](docs/good-first-issues/03-jurisdiction-adapter.md)
 
+维护者公开身份：马智辰（Zhichen Ma / 智辰老师）。联系：soarhigh1991@gmail.com；X：[@AI2studio](https://x.com/AI2studio)。
+
 ## 项目开发与验收闭环
 
 下面这条闭环解释仓库本身如何开发，不是第三方认证。Sol、Terra、Luna 和 Sol-V 只是内部自动化职责；候选内容一旦改变，就必须重新验收。
@@ -336,3 +338,6 @@ flowchart LR
 - [双语术语表](docs/content/terminology.md)
 - [“专利君”人格与视觉文字规范](docs/brand/patent-jun.md)
 - [发布说明](RELEASE_NOTES.zh-CN.md) / [English release notes](RELEASE_NOTES.md)
+- [完整案例索引](docs/cases/README.md)
+- [跨仓导航](docs/cross-repo-navigation.md)
+- [社交预览登记](docs/assets/README.md)

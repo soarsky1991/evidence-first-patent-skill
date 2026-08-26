@@ -1,5 +1,7 @@
 # 中文入口已迁移
 
+![一张主张纸和一张证据纸由一条夹线连接，并带有一个验证点 / One claim paper and one evidence paper are joined by a single clip line with one verification dot.](docs/assets/social-preview.png)
+
 完整且持续维护的中文说明位于仓库根目录 [README.md](README.md)。其中包括：
 
 - Codex、Claude Code 和通用 Agent 安装方式；

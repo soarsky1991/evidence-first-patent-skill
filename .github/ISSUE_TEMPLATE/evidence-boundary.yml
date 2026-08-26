@@ -1,0 +1,30 @@
+name: Evidence boundary or reproducibility gap
+description: Report an unsupported assertion, missing provenance, or unreproducible synthetic case.
+title: "[evidence] "
+labels: ["evidence", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Do not include client material, personal data, credentials, unpublished parameters, or legal conclusions.
+  - type: input
+    id: location
+    attributes:
+      label: File and section
+      placeholder: docs/cases/example.md#evidence
+    validations:
+      required: true
+  - type: textarea
+    id: observation
+    attributes:
+      label: Observed boundary or reproduction gap
+      description: State the command, input class, and actual result. Mark synthetic/public/local-fixture status.
+    validations:
+      required: true
+  - type: textarea
+    id: safe_fix
+    attributes:
+      label: Safe correction
+      description: Explain how the wording, provenance, or test could become inspectable without adding sensitive material.
+    validations:
+      required: true
